@@ -72,7 +72,8 @@ else
 		fi
 	fi
 
-	/usr/sbin/ipa-client-install $IPA_CLIENT_INSTALL_OPTS $HOSTNAME_OPTS -p admin -w "$PASSWORD" -U --enable-dns-updates < /dev/null
+ 
+	/usr/sbin/ipa-client-install $IPA_CLIENT_INSTALL_OPTS $HOSTNAME_OPTS -p "${IPA_ENROLL_USER:-admin}" -w "$PASSWORD" -U --enable-dns-updates < /dev/null
 	cp -f /etc/hostname /etc/hostname.ipa-client
 	echo "FreeIPA-enrolled."
 fi

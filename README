@@ -41,6 +41,11 @@ The first time this container runs, it invokes `ipa-client-install`
 with the given admin password and configures itself against
 the IPA server.
 
+You can also specify a different user to do the enroll with  IPA_ENROLL_USER if you have a user provisioned that can enroll
+hosts and dont to to use your admin user.
+
+    docker run --privileged --link freeipa-server-container:ipa -e PASSWORD=Secret123 -e IPA_ENROLL_USER=ipaenrolleracct -ti freeipa-client
+
 You can pass environment variable IPA_CLIENT_INSTALL_OPTS with
 additional options that will be passed to ipa-client-install.
 
