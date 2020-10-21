@@ -1,3 +1,4 @@
+# build slurm packages
 FROM registry.centos.org/centos:7 AS builder
 WORKDIR /root
 RUN yum -y groupinstall "Development Tools"
@@ -8,7 +9,7 @@ RUN rpmbuild -ta slurm*.tar.bz2
 
 
 
-
+# install slurm and munge before ipa stuff starts.
 FROM registry.centos.org/centos:7
 MAINTAINER David Orman
 
@@ -31,7 +32,7 @@ RUN chmod 400  /etc/munge/munge.key
 RUN chown -R 400.400 /etc/munge
 
 
-
+# regular ipa stuff
 
 RUN yum swap -y -- remove fakesystemd -- install systemd systemd-libs && yum clean all
 
