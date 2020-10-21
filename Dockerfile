@@ -19,9 +19,8 @@ RUN useradd munge -r -s /sbin/nologin -u 400 -g 400 -d /var/run/munge
 RUN groupadd -g 401 slurm
 RUN useradd slurm -u 401 -g 401 -s /sbin/nologin
 
-#RUN yum -y install epel-release
-#RUN yum -y install slurm-slurmd python2-pip cronie crontabs cronie-anacron openssh-server  python-urllib3 munge sudo wget google-authenticator postfix krb5-workstation mailx
-#RUN pip install boto3
+RUN yum -y install epel-release
+RUN yum -y install munge
 
 COPY --from=builder  /root/rpmbuild/RPMS/x86_64/slurm* /root/
 RUN yum -y localinstall /root/slurm*
