@@ -83,8 +83,9 @@ if [ -z "$1" -o "$1" != "-s" ] ; then
 		echo 'Starting interactive shell.'
 		/bin/bash
 	else
-		echo 'Go loop.'
-		while true ; do sleep 1000 & wait $! ; done
+		echo 'executing startup.sh'
+                /usr/local/bin/startup.sh
+		
 	fi
 fi
 

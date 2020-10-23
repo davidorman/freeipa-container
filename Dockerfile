@@ -30,6 +30,8 @@ RUN touch /etc/munge/munge.key
 RUN chmod 400  /etc/munge/munge.key
 RUN chown -R 400.400 /etc/munge
 
+RUN echo -e '#!/bin/bash\n/bin/sleep infinity' > /usr/local/bin/startup.sh
+RUN chmod 755 /usr/local/bin/startup.sh
 
 # regular ipa stuff
 
