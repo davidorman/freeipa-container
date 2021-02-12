@@ -3,7 +3,7 @@ FROM registry.centos.org/centos:7 AS builder
 WORKDIR /root
 RUN yum -y groupinstall "Development Tools"
 RUN yum -y install epel-release
-RUN yum -y install wget  munge-devel munge-libs readline-devel openssl-devel openssl pam-devel  perl-ExtUtils-MakeMaker  mariadb-server mariadb-devel munge
+RUN yum -y install wget  munge-devel munge-libs readline-devel openssl-devel openssl pam-devel  perl-ExtUtils-MakeMaker  mariadb-server mariadb-devel munge python3
 RUN wget https://download.schedmd.com/slurm/slurm-20.02.3.tar.bz2
 RUN rpmbuild -ta slurm*.tar.bz2
 
